@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
             spawnNext = Time.time + 60/spawnRatePerMinute;
             spawnRatePerMinute += spawnRateIncrement;
             float rand = Random.Range(-xLimit, xLimit);
-            Vector3 spawnPosition = new Vector3(rand, 11f, -1f);
+            Vector2 spawnPosition = new Vector2(rand, 11f);
             GameObject meteor = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
             Destroy(meteor, maxTimeLife);
         }
