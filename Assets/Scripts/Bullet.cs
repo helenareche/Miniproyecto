@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            IncreaseScore(); //cada vez que se destruya un meteorito
+            //IncreaseScore(); //cada vez que se destruya un meteorito
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2835861545914506279}
   - component: {fileID: 7707350637571005795}
   - component: {fileID: 3522095279103132001}
+  - component: {fileID: 4027018846691611194}
   m_Layer: 0
   m_Name: Bullet_0
   m_TagString: Untagged
@@ -108,3 +109,24 @@ MonoBehaviour:
   speed: 10
   maxLifeTime: 3
   targetVector: {x: 1, y: 0, z: 0}
+--- !u!65 &4027018846691611194
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602477651127719281}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03, y: 0.03, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
