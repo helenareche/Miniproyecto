@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float thrustForce = 10f; //fuerza de empuje
     public float rotationSpeed = 120f; //velocidad de rotación
     
-    public GameObject gun, bulletPrefab; //objetos de la Nave, pistola y balas
+    public GameObject gun; //objetos de la Nave
     private Rigidbody _rigid; //Nave
 
     public static int SCORE = 0;
@@ -58,7 +58,10 @@ public class Player : MonoBehaviour
 
        if(Input.GetKeyDown(KeyCode.Space))//preguntamos si estamos pulsado el boton de disparar
         {
-            GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity); //instanciar bala
+            GameObject bullet = BulletPool.Instance.GetBullet(); //obtenemos la primera vala de la cola
+           //Le damos dirección hy sentido a la bala
+            bullet.transform.position = gun.transform.position;
+            bullet.transform.rotation = Quaternion.identity;
             Bullet balaScript = bullet.GetComponent<Bullet>(); //para que las balas tenga la direccion de la Nave
             balaScript.targetVector = transform.right;
         } 

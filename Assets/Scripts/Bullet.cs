@@ -9,19 +9,24 @@ public class Bullet : MonoBehaviour
 
     public GameObject miniAsteroidPrefab; 
     public float splitAngle = 45f;       
-    public float miniSpeed = 3f;          
+    public float miniSpeed = 3f; 
+
+    private float lifeTimer; //tiempo de vida de la bala         
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Destroy(gameObject, maxLifeTime); //funcion para destruir la bala
+    void OnEnable(){ //cada vez que la bala se activa
+        lifeTimer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(speed * targetVector * Time.deltaTime);
+       
+        lifeTimer += Time.deltaTime; //se va sumando el tiempo de vida
+        if (lifeTimer >= maxLifeTime){ //si llega al limite de tiempo se devuelve al pool
+            BulletPool.Instance.ReturnBullet(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,7 +39,7 @@ public class Bullet : MonoBehaviour
                 MiniAsteroids(collision.transform.position);
             }
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            BulletPool.Instance.ReturnBullet(gameObject); 
         }
     }
 
